@@ -4,34 +4,34 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "posts")
-public class Post {
+@Table(name = "urs")
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
-    @CollectionTable(name = "post_role", joinColumns = @JoinColumn(name = "post_id"))
+    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
 
     private String email, name, surname, password;
     private int rating;
 
-    public Post(String email, String name, String surname, String  password) {
+    public User(String email, String name, String surname, String  password) {
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.password = password;
     }
 
-    public Post(String email, String password) {
+    public User(String email, String password) {
         this.email = email;
         this.password = password;
     }
 
-    public Post() {
+    public User() {
     }
 
     public void setId(Long id) {

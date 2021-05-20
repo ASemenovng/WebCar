@@ -1,6 +1,5 @@
 package com.webcar.WebCar.Controllers;
 
-import com.webcar.WebCar.Models.Post;
 import com.webcar.WebCar.Repo.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
