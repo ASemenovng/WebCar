@@ -1,6 +1,11 @@
 package com.webcar.WebCar.Controllers;
 
+<<<<<<< HEAD
 import com.webcar.WebCar.Models.User;
+=======
+import com.webcar.WebCar.Models.Post;
+import com.webcar.WebCar.Models.Role;
+>>>>>>> 2349f661b22d86ba61e15922a3276fbaa3ef52d2
 import com.webcar.WebCar.Repo.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +14,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+<<<<<<< HEAD
+=======
+
+import java.util.Collections;
+>>>>>>> 2349f661b22d86ba61e15922a3276fbaa3ef52d2
 
 @Controller
 public class RegistrationController {
@@ -28,9 +38,12 @@ public class RegistrationController {
                           @RequestParam String name,
                           @RequestParam String surname,
                           @RequestParam String password,
-                          Model model){
+                          Model model) {
         User post = new User(email, name, surname, password);
+
+        post.setRoles(Collections.singleton(Role.USER));\
         ResponseEntity.ok(postRepository.save(post));
+
         return "redirect:/rent";
     }
 
