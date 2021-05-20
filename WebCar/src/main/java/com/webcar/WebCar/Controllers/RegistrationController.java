@@ -1,6 +1,7 @@
 package com.webcar.WebCar.Controllers;
 
 import com.webcar.WebCar.Models.Post;
+import com.webcar.WebCar.Models.Role;
 import com.webcar.WebCar.Repo.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -9,7 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Collections;
 
 @Controller
 public class RegistrationController {
@@ -31,7 +33,10 @@ public class RegistrationController {
                           @RequestParam String password,
                           Model model){
         Post post = new Post(email, name, surname, password);
+
+        post.setRoles(Collections.singleton(Role.USER));
         ResponseEntity.ok(postRepository.save(post));
+
         return "redirect:/rent";
     }
 

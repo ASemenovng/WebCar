@@ -19,11 +19,11 @@
 </header>
 
 <div class="container mt-5">
-    <div th:each="el : ${posts}" class="alert alert-info mt-2">
-        <h3 th:text="${el.name}"/>
-        <p th:text="${el.surname}"/>
-        <a th:href="'/more/' + ${el.id}">Детальнее</a>
-    </div>
+<!--    <div th:each="el : ${posts}" class="alert alert-info mt-2">-->
+<!--        <h3 th:text="${el.name}"/>-->
+<!--        <p th:text="${el.surname}"/>-->
+<!--        <a th:href="'/more/' + ${el.id}">Детальнее</a>-->
+<!--    </div>-->
 
     <main class="form-signup">
         <form action="#" th:action="@{/registration}" method="post">
