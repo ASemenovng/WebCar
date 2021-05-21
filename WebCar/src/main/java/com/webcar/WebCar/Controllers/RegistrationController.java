@@ -1,8 +1,8 @@
 package com.webcar.WebCar.Controllers;
 
-import com.webcar.WebCar.Models.Post;
+import com.webcar.WebCar.Models.User;
 import com.webcar.WebCar.Models.Role;
-import com.webcar.WebCar.Repo.PostRepository;
+import com.webcar.WebCar.Repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -17,11 +17,11 @@ import java.util.Collections;
 public class RegistrationController {
 
     @Autowired
-    private PostRepository postRepository;
+    private UserRepository userRepository;
 
     @GetMapping("/registration")
     public String authoMain(Model model){
-        Iterable<Post> posts = postRepository.findAll();
+        Iterable<User> posts = userRepository.findAll();
         model.addAttribute("posts", posts);
         return "registration";
     }
@@ -32,10 +32,10 @@ public class RegistrationController {
                           @RequestParam String surname,
                           @RequestParam String password,
                           Model model){
-        Post post = new Post(email, name, surname, password);
+        User post = new User(email, name, surname, password);
 
         post.setRoles(Collections.singleton(Role.USER));
-        ResponseEntity.ok(postRepository.save(post));
+        ResponseEntity.ok(userRepository.save(post));
 
         return "redirect:/rent";
     }
