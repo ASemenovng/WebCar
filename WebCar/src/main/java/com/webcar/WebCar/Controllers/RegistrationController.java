@@ -22,6 +22,7 @@ public class RegistrationController {
     public String registration(Model model){
         Iterable<User> users = userRepository.findAll();
         model.addAttribute("users", users);
+      
         return "registration";
     }
 
