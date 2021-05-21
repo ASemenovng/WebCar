@@ -2,7 +2,8 @@ package com.webcar.WebCar.Models;
 
 import org.springframework.security.core.GrantedAuthority;
 
-public enum Role implements GrantedAuthority { USER;
+public enum Role implements GrantedAuthority {
+    USER;
 
     @Override
     public String getAuthority() {

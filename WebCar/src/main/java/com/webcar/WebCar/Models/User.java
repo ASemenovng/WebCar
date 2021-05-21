@@ -37,10 +37,6 @@ public class User  implements UserDetails {
     public User() {
     }
 
-    public String getUsername() {
-        return username;
-    }
-
     public void setUsername(String username) {
         this.username = username;
     }
@@ -96,7 +92,7 @@ public class User  implements UserDetails {
 
     @Override
     public String getUsername() {
-        return null;
+        return username;
     }
 
     @Override
