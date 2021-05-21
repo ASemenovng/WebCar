@@ -18,6 +18,10 @@
         <a class="py-2 d-none d-md-inline-block" href="/login">Login</a>
     </nav>
 </header><div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+<!--Logout-->
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out"/>
+    </form>
 
     <div class="carousel-inner">
         <div class="carousel-item active carousel-item-start">

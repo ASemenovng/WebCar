@@ -19,19 +19,26 @@
 </header>
 
 <div class="container mt-5">
-    <div th:each="el : ${posts}" class="alert alert-info mt-2">
-        <h3 th:text="${el.name}"/>
-        <p th:text="${el.surname}"/>
-        <a th:href="'/more/' + ${el.id}">Детальнее</a>
+<!--    <div th:each="el : ${users}" class="alert alert-info mt-2">-->
+<!--        <h3 th:text="${el.username}"/>-->
+<!--        <p th:text="${el.password}"/>-->
+<!--        <a th:href="'/more/' + ${el.id}">Детальнее</a>-->
+<!--    </div>-->
+
+    <div th:if="${param.error}">
+        Invalid username and password.
+    </div>
+    <div th:if="${param.logout}">
+        You have been logged out.
     </div>
 
     <main class="form-signup">
-        <form action="/registration.html/localhost:8080/registration" method="post">
+        <form action="/login" method="post">
             <h6>Email</h6>
-            <input type="email" name ="email" placeholder = "ivanov@gmail.com" class="form-control"><br>
+            <input type="email" name ="username" placeholder = "ivanov@gmail.com" class="form-control"><br>
             <h6>Password</h6>
             <input type="text" name ="password" placeholder = "password" class="form-control"><br>
-            <h6>Name</h6>
+            <h6> </h6>
             <input type="checkbox" value="remember-me"> Remember me <br>
             <button type ="submit" class = "btn btn-success" onClick='location.href="/rent"'>Sign in</button>
         </form>

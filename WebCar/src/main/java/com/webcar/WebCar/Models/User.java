@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "urs")
+@Table(name = "usr")
 public class User {
 
     @Id
@@ -16,21 +16,36 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
 
-    private String email, name, surname, password;
+    private String username;
+    private String password;
+    private boolean active;
+
+    private String name, surname;
 
     public User(String email, String name, String surname, String  password) {
         this.name = name;
         this.surname = surname;
-        this.email = email;
-        this.password = password;
-    }
-
-    public User(String email, String password) {
-        this.email = email;
+        this.username = email;
         this.password = password;
     }
 
     public User() {
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     public Long getId() {
@@ -47,14 +62,6 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getName() {
