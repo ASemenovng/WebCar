@@ -18,6 +18,10 @@
         <a class="py-2 d-none d-md-inline-block" href="/login">Login</a>
     </nav>
 </header><div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+<!--Logout-->
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out"/>
+    </form>
 
     <div class="carousel-inner">
         <div class="carousel-item active carousel-item-start">
@@ -123,8 +127,8 @@
     <p class="float-end"><a href="#">Back to top</a></p>
     <p>©2021 RanepAss company · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
 </footer>
-</main>
-<script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+<!--</main>-->
+<!--<script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>-->
 
 
 

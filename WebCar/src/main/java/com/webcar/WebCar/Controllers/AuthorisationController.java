@@ -1,7 +1,6 @@
 //package com.webcar.WebCar.Controllers;
 //
-//import com.webcar.WebCar.Models.Post;
-//import com.webcar.WebCar.Repo.PostRepository;
+//import com.webcar.WebCar.Repo.UserRepository;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.stereotype.Controller;
 //import org.springframework.ui.Model;
@@ -10,10 +9,10 @@
 //import org.springframework.web.bind.annotation.RequestParam;
 //
 //@Controller
-//public class LoginController {
+//public class AuthorisationController {
 //
 //    @Autowired
-//    private PostRepository postRepository;
+//    private UserRepository userRepository;
 //
 //    @GetMapping("/login")
 //    public String greeting(Model model) {
@@ -25,6 +24,8 @@
 //    public String postAdd(@RequestParam String email,
 //                          @RequestParam String password,
 //                          Model model){
+////        Post post = new Post(email, password);
+////        postRepository.save(post);
 //        return "redirect:/rent";
 //    }
 //

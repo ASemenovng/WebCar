@@ -8,35 +8,41 @@ import java.util.Collection;
 import java.util.Set;
 
 @Entity
-@Table(name = "posts")
-public class User implements UserDetails {
+@Table(name = "usr")
+public class User  implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
-    @CollectionTable(name = "post_role", joinColumns = @JoinColumn(name = "post_id"))
+  
+    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
 
-    private String email, name, surname, password;
-
+    private String username;
+    private String password;
     private boolean active;
+
+    private String name, surname;
 
     public User(String email, String name, String surname, String  password) {
         this.name = name;
         this.surname = surname;
-        this.email = email;
-        this.password = password;
-    }
-
-    public User(String email, String password) {
-        this.email = email;
+        this.username = email;
         this.password = password;
     }
 
     public User() {
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public boolean isActive() {
@@ -62,15 +68,7 @@ public class User implements UserDetails {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
+  
     public String getName() {
         return name;
     }
@@ -91,7 +89,7 @@ public class User implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return getRoles();
     }
-
+  
     public String getPassword() {
         return password;
     }
@@ -120,7 +118,7 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return isActive();
     }
-
+  
     public void setPassword(String password) {
         this.password = password;
     }

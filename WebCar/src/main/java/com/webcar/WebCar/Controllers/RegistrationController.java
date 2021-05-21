@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import java.util.Collections;
 
 @Controller
@@ -20,24 +19,55 @@ public class RegistrationController {
     private UserRepository userRepository;
 
     @GetMapping("/registration")
-    public String authoMain(Model model){
-        Iterable<User> posts = userRepository.findAll();
-        model.addAttribute("posts", posts);
+    public String registration(Model model){
+        Iterable<User> users = userRepository.findAll();
+        model.addAttribute("users", users);
+      
         return "registration";
     }
 
+//    @PostMapping("/registration")
+//    public String addUser(@RequestParam String username,
+//                          @RequestParam String name,
+//                          @RequestParam String surname,
+//                          @RequestParam String password,
+//                          Model model) {
+//        User user = new User(username, name, surname, password);
+//
+//        Iterable<User> users = userRepository.findAll();
+//        model.addAttribute("users", users);
+//
+//        User userFromBd = userRepository.findByUsername(user.getUsername());
+//
+//        if (userFromBd != null) {
+//            model.addAttribute("message", "The email exists!");
+//            return "registration";
+//        }
+//
+//        user.setActive(true);
+//        user.setRoles(Collections.singleton(Role.USER));
+//        ResponseEntity.ok(userRepository.save(user));
+//
+//        return "redirect:/login";
+//    }
+
     @PostMapping("/registration")
-    public String postAdd(@RequestParam String email,
-                          @RequestParam String name,
-                          @RequestParam String surname,
-                          @RequestParam String password,
-                          Model model){
-        User post = new User(email, name, surname, password);
+    public String addUser(User user, Model model) {
+        Iterable<User> users = userRepository.findAll();
+        model.addAttribute("users", users);
 
-        post.setRoles(Collections.singleton(Role.USER));
-        ResponseEntity.ok(userRepository.save(post));
+        User userFromBd = userRepository.findByUsername(user.getUsername());
 
-        return "redirect:/rent";
+        if (userFromBd != null) {
+            model.addAttribute("message", "The email exists!");
+            return "registration";
+        }
+
+        user.setActive(true);
+        user.setRoles(Collections.singleton(Role.USER));
+        ResponseEntity.ok(userRepository.save(user));
+
+        return "redirect:/login";
     }
 
 }
