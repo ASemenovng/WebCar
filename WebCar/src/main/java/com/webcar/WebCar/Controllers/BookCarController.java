@@ -20,7 +20,7 @@ public class BookCarController {
     @GetMapping("/book")
     public String book(Model model){
         model.addAttribute("title", "Your car");
-        return "/book";
+        return "book";
     }
 
     @PostMapping("/book")
